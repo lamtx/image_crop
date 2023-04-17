@@ -60,7 +60,9 @@ class Crop extends StatefulWidget {
       context.findAncestorStateOfType<CropState>();
 }
 
-class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
+class CropState extends State<Crop>
+    with TickerProviderStateMixin
+    implements Drag {
   final _surfaceKey = GlobalKey();
 
   late final AnimationController _activeController;
@@ -616,6 +618,19 @@ class CropState extends State<Crop> with TickerProviderStateMixin, Drag {
       });
     }
   }
+  void update(DragUpdateDetails details) { }
+
+  /// The pointer is no longer in contact with the screen.
+  ///
+  /// The velocity at which the pointer was moving when it stopped contacting
+  /// the screen is available in the `details`.
+  void end(DragEndDetails details) { }
+
+  /// The input from the pointer is no longer directed towards this receiver.
+  ///
+  /// For example, the user might have been interrupted by a system-modal dialog
+  /// in the middle of the drag.
+  void cancel() { }
 }
 
 class _CropPainter extends CustomPainter {
